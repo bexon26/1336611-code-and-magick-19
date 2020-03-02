@@ -1,7 +1,15 @@
 'use strict';
 // setup.js
+
 (function () {
   var setupForm = document.querySelector('.setup-wizard-form');
+  setupForm.addEventListener('submit', function (evt) {
+    window.save(new FormData(setupForm), function (response) {
+      window.dialog.setupWindowWizard.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
+
   setupForm.setAttribute('action', 'https://js.dump.academy/code-and-magick');
 
   var setupWizzardCoat = document.querySelector('.setup-wizard .wizard-coat');
